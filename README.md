@@ -14,10 +14,10 @@ Based on Json Server (https://github.com/typicode/json-server)) and json-server-
 
 <h2 align="center">Quick overview about options:</h2>
 
-* Json server allows you to GET,POST,PUT,DELETE over resources and allow as well filter them by attributes,pagination,sort,etc.. (more info in the json-server documentation above)
+* Json server allows you to GET,POST,PUT,DELETE over resources and allow as well filter them by attributes,pagination,sort,etc.. (more info in the extract of json-server documentation above or directly visit original repository)
 
 * You can protect routes using the linux file format http://localhost:8080/XYZ/resources and only access them using
-a jwt token in the header ( see json-server-auth documentation above)
+a jwt token in the header ( see extract of json-server-auth documentation above or directly visit original repository)
 
 * To reset database consume endpoint: http://localhost:8080/resetdatabase it will dump the content of the file initial_database.json into the current_database.json
 
