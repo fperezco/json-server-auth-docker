@@ -1,0 +1,11 @@
+version: '3'
+services:
+  json-server:
+    build: .docker/jsonserver
+    container_name: backend-server-lite
+    ports:
+      - 8080:8080
+    volumes:
+      - .docker/jsonserver/:/tmp/
+    working_dir: /tmp
+    command: node server.js

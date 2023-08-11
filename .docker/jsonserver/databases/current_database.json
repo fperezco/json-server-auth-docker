@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "email": "user2@test.com",
+      "password": "$2a$10$S3b6q6pOkTrryd/nL1tNG.gJ3rZsloJihRoKns3AGHRcuzt/pe6Si",
+      "id": 1
+    },
+    {
+      "email": "nuevouser300@test.com",
+      "password": "$2a$10$8/OOpM6mu2TtZCyMDZOLrOPO5bZFrW9eoAMgySrebHIhlEZYMRnym",
+      "id": 2
+    }
+  ],
+  "actions": [
+    {
+      "imageUrl": "assets/images/action_cards_samples/girl.png",
+      "category": "VIDEOCALLS",
+      "title": "MEET WITH THE PHYSICAL COACH",
+      "day": "Day 2"
+    }
+  ],
+  "sports": [
+    {
+      "imageUrl": "assets/images/action_cards_samples/girl.png",
+      "category": "VIDEOCALLS",
+      "title": "MEET WITH THE PHYSIOTHERAPIST",
+      "day": "Day 8"
+    }
+  ]
+}
