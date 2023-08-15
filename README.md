@@ -21,6 +21,8 @@ a jwt token in the header ( see extract of json-server-auth documentation above 
 
 * To reset database consume endpoint: http://localhost:8080/resetdatabase it will dump the content of the file initial_database.json into the current_database.json
 
+* To set a custom fixture in the database, send a post to endpoint: http://localhost:8080/loadfixtures it will dump body of the request in json into the current_database.json
+
 <h2 align="center">json-server docs</h2>
 
 ## Table of contents
