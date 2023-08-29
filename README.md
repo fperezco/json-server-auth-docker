@@ -1,6 +1,6 @@
 # JSON Server ( custom ) 
 
-Just a custom docker image that run a json server auth with a custom route to reset database
+Just a custom docker image that run a json server auth with a custom route to reset database and load fixtures
 Based on Json Server (https://github.com/typicode/json-server)) and json-server-auth (https://github.com/jeremyben/json-server-auth)
 
 <h2 align="center">Quick brief:</h2>

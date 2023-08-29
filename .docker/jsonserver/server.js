@@ -16,28 +16,20 @@ server.use((err, req, res, next) => {
   }
 });
 
-//aux methods
-function updateDatabase() {
-  const dbContent = fs.readFileSync('databases/current_database.json', 'utf8');
-  const jsonData = JSON.parse(dbContent);
-  router.db.setState(jsonData);
-}
-
 //Custom routes
 //Custom route to reset database
 server.get('/resetdatabase', (req, res) => {
-
+  console.log('Incoming reset database request');
   try {
-    res.json({ message: 'Database reset and reloaded successfully' });
     const initialDbContent = fs.readFileSync('databases/initial_database.json', 'utf8');
 
     try {
       const initialJsonData = JSON.parse(initialDbContent);
       fs.writeFileSync('databases/current_database.json', JSON.stringify(initialJsonData, null, 2));
-
-      //update database content in server
-      updateDatabase();
-
+      res.json({ message: 'Database reset and reloaded successfully' });
+      console.log('Database has been reset');
+      fs.writeFileSync('server.pid', Date.now());
+      //nodemon will restart the server
     } catch (error) {
       console.error('Error resetting initial database:', error);
     }
@@ -51,26 +43,38 @@ server.get('/resetdatabase', (req, res) => {
 
 // Custom route to load fixtures
 server.post('/loadfixtures', (req, res) => {
-
-  try{
+  console.log('Incoming load fixtures request');
+  try {
     const fixtures = req.body;
 
     if (!fixtures || Object.keys(fixtures).length === 0) {
       return res.status(400).json({ message: 'Fixtures data is missing or empty :(' });
     }
-  
 
-    fs.writeFileSync('databases/current_database.json', JSON.stringify(fixtures, null, 2));
+    const currentDbContent = fs.readFileSync('databases/current_database.json', 'utf8');
+    const currentData = JSON.parse(currentDbContent);
+
+    for (const key in fixtures) {
+      if (currentData.hasOwnProperty(key)) {
+        currentData[key] = currentData[key].concat(fixtures[key]);
+      } else {
+        currentData[key] = fixtures[key];
+      }
+    }
+
+    fs.writeFileSync('databases/current_database.json', JSON.stringify(currentData, null, 2));
     res.json({ message: 'Fixtures loaded successfully' });
+    console.log('Fixtures loaded');
+    fs.writeFileSync('server.pid', Date.now());
 
-     //update database content in server
-     updateDatabase();
+    //nodemon will restart the server
 
   } catch (error) {
     console.error('Error loading fixtures:', error);
     res.status(500).json({ message: 'Error loading fixtures' });
   }
 });
+
 
 server.db = router.db;
 server.use(auth);

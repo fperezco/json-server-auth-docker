@@ -7,4 +7,4 @@ RUN apt-get update \
   && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
   && apt-get install -y nodejs
 
-RUN npm install -g express json-server json-server-auth
+RUN npm install -g express json-server json-server-auth nodemon
